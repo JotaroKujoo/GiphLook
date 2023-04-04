@@ -3,20 +3,22 @@ import GifDetail from "../../components/GifDetail"
 import GetGifsById from "../../services/GetGifsById"
 
 export default function Detail ({params}){
-    const [id, setId] = useState([])
     const [gifs, setGif] = useState([])
 
     useEffect(()=>{
-        setId(params.id)
         GetGifsById(params.id)
-            .then(res => setGif(res.images.downsized_medium.url))
+            .then(res => setGif({
+                url: res.images.downsized_medium.url,
+                title: res.title
+            }))
     },[params.id])
 
     return(
         <>
             <GifDetail 
             id={params.id}
-            url={gifs}
+            title={gifs.title}
+            url={gifs.url}
             />
         </>
     )

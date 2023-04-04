@@ -1,20 +1,14 @@
+import { Link } from "wouter";
 import "./Gif.css";
 import GifDetail from "./GifDetail";
 
 export default function Gif ({id, title, url}){
-  const gifHandler = (id) => {
-    console.log(id);
-    return(
-      <>
-        <GifDetail id={id}/>
-      </>
-    )
-  }
+  
 
     return (
-        <a onClick={()=>{gifHandler(id)}} href={`/gifdetail/${id}`} className="Gif">
+        <Link  to={`/gifdetail/${id}`} className="Gif linkDesign">
           <h4>{title}</h4>
-          <img className="GifImage" src={url} />
-        </a>
+          <img className="GifImage" key={id} alt={title} src={url} />
+        </Link>
       )
 }

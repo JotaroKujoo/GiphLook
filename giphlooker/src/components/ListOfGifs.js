@@ -1,5 +1,5 @@
 import Gif from "./Gif";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 
 export default function ListOfGifs({gifs}) {

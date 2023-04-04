@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "wouter"
+import "./index.css"
 
 const POPULAR_GIFS = ["Goku", "Jotaro", "Sonic", "Mario"]
 
@@ -11,7 +12,7 @@ export default function Home () {
             {
                 POPULAR_GIFS.map((popularGif) => (
                     <li key={popularGif}>
-                        <Link to={`/search/${popularGif}`}>
+                        <Link className="linkDesign" to={`/search/${popularGif}`}>
                             Gifs de {popularGif}
                         </Link>
                     </li>

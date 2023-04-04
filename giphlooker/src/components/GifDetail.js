@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react"
-import GetGifsById from "../services/GetGifsById"
+import React from "react"
 
-export default function GifDetail(gif){
-    console.log(gif.params.id)
-    const [id, setId] = useState([])
-    const [gifs, setGif] = useState([])
-
-    useEffect(()=>{
-        setId(gif.params.id)
-        GetGifsById(gif.params.id)
-            .then(res => setGif(res.images.downsized_medium.url))
-    },[gif.params.id])
-
+export default function GifDetail({id,url}){
+    
     return (
         <div>
             <h1>{id}</h1>
-            <img src={gifs} />
+            <img src={url} />
         </div>
     )
 }

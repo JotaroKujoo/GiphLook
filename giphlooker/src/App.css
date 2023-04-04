@@ -14,6 +14,15 @@
   color: white;
 }
 
-button {
-  font-size: 30px;
+.linkContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.linkDesign{
+  text-decoration: none;
+  color: white;
 }

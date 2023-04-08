@@ -13,7 +13,7 @@ function App() {
       
       <section className="App-content">
 
-        <h1><Link className="linkDesign" to='/'>App</Link></h1>
+        <h1><Link className="linkDesign" to='/'>GIPHY</Link></h1>
             
         <Route 
           component={Home}

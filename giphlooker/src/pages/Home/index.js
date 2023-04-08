@@ -10,6 +10,7 @@ export default function Home() {
     
     const handleSubmit = evt => {
         evt.preventDefault()
+        //Navegear a otra ruta
         pushLocation(`/search/${keyword}`)
     }
 

@@ -6,7 +6,8 @@ const POPULAR_GIFS = ["Goku", "Jotaro", "Sonic", "Mario"]
 export default function HomeView ({gifs}){
     const [keyword, setKeyword] = useState("")
     const [path, pushLocation] = useLocation()
-    
+    console.log(path)
+
     const handleSubmit = evt => {
         evt.preventDefault()
         //Navegear a otra ruta

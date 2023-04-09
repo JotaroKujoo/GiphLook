@@ -1,4 +1,3 @@
-import React, { useState,useEffect } from "react"
 import "./index.css"
 import ListOfGifs from "../../components/ListOfGifs"
 import { useGifs } from "../../hooks/useGifs"
@@ -7,10 +6,9 @@ import HomeView from "../../components/HomeView"
 
 
 export default function Home() {
-    const [keyword, setKeyword] = useState("Rick")
     
     
-    const {loading,gifs} =  useGifs({keyword})
+    const {loading,gifs} =  useGifs()
     
     return (
         <>

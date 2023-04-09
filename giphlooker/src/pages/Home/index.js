@@ -1,51 +1,24 @@
-import React, { useState } from "react"
-import { Link,useLocation } from "wouter"
+import React, { useState,useEffect } from "react"
 import "./index.css"
+import ListOfGifs from "../../components/ListOfGifs"
+import { useGifs } from "../../hooks/useGifs"
+import Spinner from "../../components/Spinner"
+import HomeView from "../../components/HomeView"
 
-const POPULAR_GIFS = ["Goku", "Jotaro", "Sonic", "Mario"]
 
 export default function Home() {
-    const [keyword, setKeyword] = useState("")
-    const [path, pushLocation] = useLocation()
+    const [keyword, setKeyword] = useState("Rick")
     
-    const handleSubmit = evt => {
-        evt.preventDefault()
-        //Navegear a otra ruta
-        pushLocation(`/search/${keyword}`)
-    }
-
-    const handleChange = evt => {
-        setKeyword(evt.target.value)
-    }
-
-
-
+    
+    const {loading,gifs} =  useGifs({keyword})
+    
     return (
         <>
-            <h3>Los gifs mas populares</h3>
-
-            <form onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
-                    placeholder="Search for a gif..."
-                    onChange={handleChange}
-                    value={keyword}
-                />
-                <button>Buscar</button>
-
-            </form>
-
-            <div className="listContainer">
-                {
-                    POPULAR_GIFS.map((popularGif) => (
-                        <li key={popularGif}>
-                            <Link className="linkDesign" to={`/search/${popularGif}`}>
-                                Gifs de {popularGif}
-                            </Link>
-                        </li>
-                    ))
-                }
-            </div>
+            {
+                loading
+                ? <Spinner/>
+                : <div><HomeView gifs={gifs}/> <ListOfGifs gifs={gifs}/></div>
+            }
         </>
     )
 }

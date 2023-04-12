@@ -1,25 +1,14 @@
-import { useEffect, useState } from "react"
-import GifDetail from "../../components/GifDetail"
-import GetGifsById from "../../services/GetGifsById"
+import { useContext} from "react"
+import  GifsContext  from "../../context/GifsContext"
+import Gif from "../../components/Gif"
 
 export default function Detail ({params}){
-    const [gifs, setGif] = useState([])
+    const {gifs} = useContext(GifsContext)
 
-    useEffect(()=>{
-        GetGifsById(params.id)
-            .then(res => setGif({
-                url: res.images.downsized_medium.url,
-                title: res.title
-            }))
-    },[params.id])
+    const gif = gifs.find(singleGif => singleGif.id === params.id)
 
-    return(
-        <>
-            <GifDetail 
-            id={params.id}
-            title={gifs.title}
-            url={gifs.url}
-            />
-        </>
+    
+    return (
+        <Gif{...gif}/>
     )
 }
